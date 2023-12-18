@@ -1,18 +1,14 @@
-#提交就可以直接用的配置模板文件。 user: root/password: password
-#a template config can be use with a apply. user: root/password: password
 http:
   pprof:
     port: 6060
     enabled: false
   address: 0.0.0.0:3000
   session_ttl: 720h
-users:
-  - name: root
-    password: $2y$10$VJ6oSzqPofT6DAO6xXino.pDpdXYBY0gzn5B4mYfJtavdSgxljKrK
+users: []
 auth_attempts: 5
 block_auth_min: 15
 http_proxy: ""
-language: zh-cn
+language: zh-tw
 theme: auto
 dns:
   bind_hosts:
@@ -20,19 +16,17 @@ dns:
   port: 1745
   anonymize_client_ip: false
   ratelimit: 0
+  ratelimit_subnet_len_ipv4: 24
+  ratelimit_subnet_len_ipv6: 56
   ratelimit_whitelist: []
   refuse_any: false
   upstream_dns:
-    - 223.5.5.5
+    - 8.8.8.8
+    - 1.1.1.1
   upstream_dns_file:
   bootstrap_dns:
-    - 119.29.29.29
-    - 223.5.5.5
-    - 144.144.144.144
-    - 101.6.6.6
-    - 119.29.29.29
-    - 101.226.4.6
-    - 180.76.76.76
+    - 8.8.8.8
+    - 1.1.1.1
   fallback_dns: []
   all_servers: true
   fastest_addr: false
@@ -46,7 +40,7 @@ dns:
   trusted_proxies:
     - 127.0.0.0/8
     - ::1/128
-  cache_size: 0
+  cache_size: 4194304
   cache_ttl_min: 0
   cache_ttl_max: 0
   cache_optimistic: false
@@ -70,6 +64,7 @@ dns:
   dns64_prefixes: []
   serve_http3: false
   use_http3_upstreams: false
+  serve_plain_dns: true
 tls:
   enabled: false
   server_name: ""
@@ -87,100 +82,69 @@ tls:
   strict_sni_check: false
 querylog:
   ignored: []
-  interval: 24h
+  interval: 168h
   size_memory: 1000
   enabled: true
   file_enabled: true
 statistics:
   ignored: []
-  interval: 2160h
+  interval: 720h
   enabled: true
 filters:
   - enabled: true
-    url: https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt
-    name: AdGuard DNS filter
-    id: 1628750870
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_24.txt
+    name: 1Hosts (Lite)
+    id: 1702752786
   - enabled: true
-    url: https://anti-ad.net/easylist.txt
-    name: anti-AD
-    id: 1628750871
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_1.txt
+    name: AdGuard DNS filter
+    id: 1702752787
+  - enabled: true
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_5.txt
+    name: OISD Blocklist Small
+    id: 1702752788
+  - enabled: true
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_33.txt
+    name: Steven Black's List
+    id: 1702752789
+  - enabled: true
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_21.txt
+    name: 'CHN: anti-AD'
+    id: 1702752790
   - enabled: true
     url: https://easylist-downloads.adblockplus.org/easylist.txt
     name: EasyList
-    id: 1677875715
+    id: 1702752791
+  - enabled: true
+    url: https://easylist-downloads.adblockplus.org/easyprivacy.txt
+    name: EasyPrivacy
+    id: 1702752792
   - enabled: true
     url: https://easylist-downloads.adblockplus.org/easylistchina.txt
-    name: EasylistChina
-    id: 1677875716
-  - enabled: true
-    url: https://cdn.jsdelivr.net/gh/cjx82630/cjxlist@master/cjx-annoyance.txt
-    name: CJX'sAnnoyanceList
-    id: 1677875717
-  - enabled: true
-    url: https://cdn.jsdelivr.net/gh/zsakvo/AdGuard-Custom-Rule@master/rule/zhihu-strict.txt
-    name: 移除知乎部分广告
-    id: 1677875718
-  - enabled: true
-    url: https://gist.githubusercontent.com/Ewpratten/a25ae63a7200c02c850fede2f32453cf/raw/b9318009399b99e822515d388b8458557d828c37/hosts-yt-ads
-    name: Youtube去广告
-    id: 1677875720
-  - enabled: true
-    url: https://raw.githubusercontent.com/adbyby/xwhyc-rules/master/lazy.txt
-    name: Adbyby-lazy
-    id: 1677875721
-  - enabled: true
-    url: https://raw.githubusercontent.com/adbyby/xwhyc-rules/master/video.txt
-    name: Adbyby-video
-    id: 1677875722
+    name: EasyList China
+    id: 1702752793
   - enabled: true
     url: https://raw.githubusercontent.com/banbendalao/ADgk/master/ADgk.txt
     name: ADgk
-    id: 1677875724
+    id: 1702752794
+  - enabled: true
+    url: https://raw.githubusercontent.com/cjx82630/cjxlist/master/cjx-annoyance.txt
+    name: CJX's Annoyance List
+    id: 1702752795
   - enabled: true
     url: https://www.i-dont-care-about-cookies.eu/abp/
     name: I don't care about cookies
-    id: 1677875725
+    id: 1702752796
   - enabled: true
-    url: https://raw.githubusercontent.com/jdlingyu/ad-wars/master/hosts
-    name: 大圣净化 - 针对国内视频网站
-    id: 1677875726
+    url: https://filter.futa.gg/hosts.txt
+    name: LowTechFilter
+    id: 1702752797
   - enabled: true
-    url: https://raw.githubusercontent.com/Goooler/1024_hosts/master/hosts
-    name: 1024_hosts - 1024网站和澳门皇家赌场
-    id: 1677875727
-  - enabled: true
-    url: https://winhelp2002.mvps.org/hosts.txt
-    name: Mvps - 屏蔽美欧地区英文网站相关的广告
-    id: 1677875728
-whitelist_filters:
-  - enabled: true
-    url: https://cdn.jsdelivr.net/gh/hl2guide/Filterlist-for-AdGuard@master/filter_whitelist.txt
-    name: hl2guideFilterlist-for-AdGuard
-    id: 1677875733
-  - enabled: true
-    url: https://cdn.jsdelivr.net/gh/hg1978/AdGuard-Home-Whitelist@master/whitelist.txt
-    name: hg1978/AdGuard-Home-Whitelist
-    id: 1677875734
-  - enabled: true
-    url: https://cdn.jsdelivr.net/gh/mmotti/adguard-home-filters@master/whitelist.txt
-    name: mmotti/adguard-home-filters
-    id: 1677875735
-  - enabled: true
-    url: https://cdn.jsdelivr.net/gh/liwenjie119/adg-rules@master/white.txt
-    name: LWJ'swhitelist
-    id: 1677875737
-  - enabled: true
-    url: https://cdn.jsdelivr.net/gh/JamesDamp/AdGuard-Home---Personal-Whitelist@master/AdGuardHome-Whitelist.txt
-    name: JamesDamp/Personal-Whitelist
-    id: 1677875739
-  - enabled: true
-    url: https://cdn.jsdelivr.net/gh/scarletbane/AdGuard-Home-Whitelist@main/whitelist.txt
-    name: scarletbane/AdGuard-Home-Whitelist
-    id: 1677875740
-user_rules:
-  - '@@||gsp0.baidu.com^$important'
-  - '@@||analytics.google.com^$important'
-  - ""
+    url: https://filter.futa.gg/nofarm_hosts.txt
+    name: LowTechFilter Nofarm
+    id: 1702752798
+whitelist_filters: []
+user_rules: []
 dhcp:
   enabled: false
   interface_name: ""
@@ -214,7 +178,7 @@ filtering:
     pixabay: true
     yandex: true
     youtube: true
-  blocking_mode: default
+  blocking_mode: nxdomain
   parental_block_host: family-block.dns.adguard.com
   safebrowsing_block_host: standard-block.dns.adguard.com
   rewrites: []
@@ -223,7 +187,7 @@ filtering:
   parental_cache_size: 1048576
   cache_time: 30
   filters_update_interval: 24
-  blocked_response_ttl: 60
+  blocked_response_ttl: 10
   filtering_enabled: true
   parental_enabled: false
   safebrowsing_enabled: false

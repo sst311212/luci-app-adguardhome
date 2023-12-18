@@ -19,7 +19,10 @@ XHR.poll(3, '<%=url([[admin]], [[services]], [[AdGuardHome]], [[status]])%>', nu
 );
 //]]>
 </script>
-<style>.mar-10 {margin-left: 50px; margin-right: 10px;}</style>
+<style>
+	.mar-10 {margin-left: 50px; margin-right: 10px;}
+	.cbi-input-textarea {min-width: 50rem !important;}
+</style>
 <fieldset class="cbi-section">
 	<p id="AdGuardHome_status">
 		<em><%:Collecting data...%></em>
