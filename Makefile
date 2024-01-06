@@ -6,7 +6,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=luci-app-adguardhome
-PKG_VERSION:=1.8-20231227
+PKG_VERSION:=1.8-20240106
 PKG_RELEASE:=1
 PKG_MAINTAINER:=<https://github.com/rufengsuixing/luci-app-adguardhome>
 
@@ -18,6 +18,13 @@ LUCI_DESCRIPTION:=LuCI support for adguardhome
 define Package/luci-app-adguardhome/conffiles
 /usr/share/AdGuardHome/links.txt
 /etc/config/AdGuardHome
+/etc/AdGuardHome/
+/etc/AdGuardHome/config.yaml
+endef
+
+define Package/luci-app-adguardhome/install
+	$(INSTALL_DIR) $(1)/etc/AdGuardHome
+	$(INSTALL_CONF) ./root/usr/share/AdGuardHome/AdGuardHome_template.yaml $(1)/etc/AdGuardHome/config.yaml
 endef
 
 define Package/luci-app-adguardhome/postinst
@@ -47,7 +54,7 @@ endef
 
 define Package/luci-app-adguardhome/postrm
 #!/bin/sh
-rm -rf /etc/AdGuardHome/
+rm -rf /etc/AdGuardHome
 exit 0
 endef
 
