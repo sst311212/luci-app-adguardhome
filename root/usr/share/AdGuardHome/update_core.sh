@@ -49,7 +49,7 @@ check_latest_version(){
 					rm -fr /tmp/AdGuardHomeupdate/AdGuardHome/${binpath##*/}
 					/tmp/upx-${upx_latest_ver}-${Arch}_linux/upx $upxflag $binpath -o /tmp/AdGuardHomeupdate/AdGuardHome/${binpath##*/}
 					rm -rf /tmp/upx-${upx_latest_ver}-${Arch}_linux
-					/etc/init.d/AdGuardHome stop nobackup
+					/etc/init.d/AdGuardHome stop_nobackup
 					rm $binpath
 					mv -f /tmp/AdGuardHomeupdate/AdGuardHome/${binpath##*/} $binpath
 					/etc/init.d/AdGuardHome start
@@ -210,7 +210,7 @@ doupdate_core(){
 		rm -rf /tmp/upx-${upx_latest_ver}-${Arch}_linux
 	fi
 	echo -e "start copy" 
-	/etc/init.d/AdGuardHome stop nobackup
+	/etc/init.d/AdGuardHome stop_nobackup
 	rm -f "$binpath"
 	mv -f "$downloadbin" "$binpath"
 	if [ "$?" == "1" ]; then
