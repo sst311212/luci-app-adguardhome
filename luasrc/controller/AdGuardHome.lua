@@ -44,7 +44,7 @@ function get_template_config()
 			end
 		end
 	end
-	local f=io.open("/usr/share/AdGuardHome/AdGuardHome_template.yaml", "r+")
+	local f=io.open("/usr/share/AdGuardHome/template.yaml", "r+")
 	local tbl = {}
 	local a=""
 	while (1) do
