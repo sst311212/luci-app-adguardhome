@@ -19,6 +19,7 @@ LUCI_DESCRIPTION:=LuCI support for AdGuardHome
 define Package/luci-app-adguardhome/conffiles
 /etc/AdGuardHome/config.yaml
 /etc/config/AdGuardHome
+/usr/bin/AdGuardHome
 /usr/share/AdGuardHome/links.txt
 endef
 
