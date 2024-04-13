@@ -21,15 +21,18 @@ dns:
   ratelimit_whitelist: []
   refuse_any: false
   upstream_dns:
+    - 101.101.101.101
     - 8.8.8.8
     - 1.1.1.1
-  upstream_dns_file:
+  upstream_dns_file: ""
   bootstrap_dns:
+    - 101.101.101.101
     - 8.8.8.8
     - 1.1.1.1
-  fallback_dns: []
-  all_servers: true
-  fastest_addr: false
+  fallback_dns:
+    - 168.95.192.1
+    - 168.95.1.1
+  upstream_mode: parallel
   fastest_timeout: 1s
   allowed_clients: []
   disallowed_clients: []
@@ -58,13 +61,14 @@ dns:
   bootstrap_prefer_ipv6: false
   upstream_timeout: 10s
   private_networks: []
-  use_private_ptr_resolvers: true
+  use_private_ptr_resolvers: false
   local_ptr_upstreams: []
   use_dns64: false
   dns64_prefixes: []
   serve_http3: false
   use_http3_upstreams: false
   serve_plain_dns: true
+  hostsfile_enabled: true
 tls:
   enabled: false
   server_name: ""
@@ -81,68 +85,62 @@ tls:
   private_key_path: ""
   strict_sni_check: false
 querylog:
+  dir_path: ""
   ignored: []
-  interval: 168h
+  interval: 24h
   size_memory: 1000
   enabled: true
   file_enabled: true
 statistics:
+  dir_path: ""
   ignored: []
-  interval: 720h
+  interval: 168h
   enabled: true
 filters:
   - enabled: true
-    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_24.txt
-    name: 1Hosts (Lite)
-    id: 1702752786
-  - enabled: true
     url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_1.txt
     name: AdGuard DNS filter
-    id: 1702752787
+    id: 1712827149
   - enabled: true
-    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_5.txt
-    name: OISD Blocklist Small
-    id: 1702752788
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_53.txt
+    name: AWAvenue Ads Rule
+    id: 1712827150
   - enabled: true
-    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_33.txt
-    name: Steven Black's List
-    id: 1702752789
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_48.txt
+    name: HaGeZi's Pro Blocklist
+    id: 1712827151
   - enabled: true
-    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_21.txt
-    name: 'CHN: anti-AD'
-    id: 1702752790
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_29.txt
+    name: 'CHN: AdRules DNS List'
+    id: 1712827152
   - enabled: true
-    url: https://easylist-downloads.adblockplus.org/easylist.txt
+    url: https://adguardteam.github.io/HostlistsRegistry/assets/filter_44.txt
+    name: HaGeZi's Threat Intelligence Feeds
+    id: 1712827161
+  - enabled: true
+    url: https://easylist.to/easylist/easylist.txt
     name: EasyList
-    id: 1702752791
+    id: 1712827155
   - enabled: true
-    url: https://easylist-downloads.adblockplus.org/easyprivacy.txt
+    url: https://easylist.to/easylist/easyprivacy.txt
     name: EasyPrivacy
-    id: 1702752792
+    id: 1712827156
   - enabled: true
     url: https://easylist-downloads.adblockplus.org/easylistchina.txt
     name: EasyList China
-    id: 1702752793
-  - enabled: true
-    url: https://raw.githubusercontent.com/banbendalao/ADgk/master/ADgk.txt
-    name: ADgk
-    id: 1702752794
-  - enabled: true
-    url: https://raw.githubusercontent.com/cjx82630/cjxlist/master/cjx-annoyance.txt
-    name: CJX's Annoyance List
-    id: 1702752795
+    id: 1712827157
   - enabled: true
     url: https://www.i-dont-care-about-cookies.eu/abp/
     name: I don't care about cookies
-    id: 1702752796
+    id: 1712827158
   - enabled: true
-    url: https://filter.futa.gg/hosts.txt
-    name: LowTechFilter
-    id: 1702752797
+    url: https://filter.futa.gg/hosts_abp.txt
+    name: LowTechHost
+    id: 1712827159
   - enabled: true
-    url: https://filter.futa.gg/nofarm_hosts.txt
-    name: LowTechFilter Nofarm
-    id: 1702752798
+    url: https://filter.futa.gg/nofarm_abp.txt
+    name: LowTechHost - NoFarm
+    id: 1712827160
 whitelist_filters: []
 user_rules: []
 dhcp:
@@ -178,7 +176,7 @@ filtering:
     pixabay: true
     yandex: true
     youtube: true
-  blocking_mode: nxdomain
+  blocking_mode: default
   parental_block_host: family-block.dns.adguard.com
   safebrowsing_block_host: standard-block.dns.adguard.com
   rewrites: []
@@ -212,4 +210,4 @@ os:
   group: ""
   user: ""
   rlimit_nofile: 0
-schema_version: 27
+schema_version: 28
